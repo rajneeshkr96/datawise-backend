@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flasgger import Swagger, LazyJSONEncoder
 from routes.dataset_routes import dataset_bp
