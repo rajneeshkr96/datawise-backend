@@ -18,12 +18,20 @@ template = {
     "schemes": ["http"]
 }
 
-Swagger(app, template=template)  # ✅ Don't use `config=...`
+Swagger(app, template=template)
 
 # Register routes
 app.register_blueprint(dataset_bp)
 app.register_blueprint(home_bp)
 app.register_blueprint(quality_bp)
 
+# for development used this method-----------
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
