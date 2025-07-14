@@ -10,13 +10,20 @@ def create_dataset(data):
     })
     return str(datasets.insert_one(data).inserted_id)
 
-def list_datasets(owner=None, tag=None):
+def list_datasets(owner=None, tag=None, limit=None):
     query = {"is_deleted": False}
     if owner:
         query["owner"] = owner
     if tag:
         query["tags"] = tag
-    return list(datasets.find(query))
+
+    cursor = datasets.find(query).sort("created_at", -1)
+    if limit:
+        cursor = cursor.limit(limit)
+
+    return list(cursor)
+
+
 
 def get_dataset(dataset_id):
     return datasets.find_one({"_id": ObjectId(dataset_id), "is_deleted": False})

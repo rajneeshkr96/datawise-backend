@@ -82,7 +82,14 @@ def list_datasets():
     """
     owner = request.args.get("owner")
     tag = request.args.get("tag")
-    datasets = dataset_service.list_datasets(owner, tag)
+    limit = request.args.get("limit")
+    if limit is not None:
+        try:
+            limit = int(limit)
+        except ValueError:
+            return {"error": "limit must be an integer"}, 400
+    
+    datasets = dataset_service.list_datasets(owner, tag,limit)
     return jsonify(serialize_list(datasets)), 200
 
 @dataset_bp.route('/datasets/<id>', methods=['GET'])
