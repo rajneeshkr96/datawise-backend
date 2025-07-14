@@ -1,4 +1,8 @@
+
+<!-- SERVER RUNNING PORT -->
+PORT=5000
 <!-- add database uri -->
+
 MONGO_URI=mongodb://localhost:27017/
 <!-- add database name  -->
 DB_NAME=dataset_catalog
