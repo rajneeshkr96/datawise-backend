@@ -9,10 +9,12 @@ from routes.quality_routes import quality_bp
 app = Flask(__name__)
 app.json_encoder = LazyJSONEncoder
 
-cors_origins = os.getenv("CORS_ORIGINS", "")
-allowed_origins = [origin.strip() for origin in cors_origins.split(",") if origin.strip()]
+# cors_origins = os.getenv("CORS_ORIGINS", "")
+# allowed_origins = [origin.strip() for origin in cors_origins.split(",") if origin.strip()]
 
-CORS(app, resources={r"/*": {"origins": allowed_origins}})
+# CORS(app, resources={r"/*": {"origins": allowed_origins}})
+
+CORS(app)
 
 template = {
     "swagger": "2.0",
