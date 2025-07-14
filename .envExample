@@ -2,3 +2,5 @@
 MONGO_URI=mongodb://localhost:27017/
 <!-- add database name  -->
 DB_NAME=dataset_catalog
+<!-- site you want to allow  -->
+CORS_ORIGINS=http://localhost:5173,https://example.vercel.app
